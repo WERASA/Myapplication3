@@ -37,17 +37,21 @@ public class MainActivity extends AppCompatActivity {
         final SharedPreferences sharedPreferences=this.getSharedPreferences("config", Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor=sharedPreferences.edit();
 
-        if (sharedPreferences.getBoolean("isRemeber",false)) {
-        mAccount.setText(sharedPreferences.getString("rAccount", ""));
-            mPassword.setText(sharedPreferences.getString("rPassword", ""));
-            isRemeber.setChecked(true);
-        }
 
 
 
-        final    String password =mPassword.getText().toString();
-        final    String string=mAccount.getText().toString();
+
         log=(TextView)findViewById(R.id.log) ;
+        if (sharedPreferences.getBoolean("isRemeber",false)) {
+            mAccount.setText(sharedPreferences.getString("rAccount", ""));
+            mPassword.setText(sharedPreferences.getString("rPassword", ""));
+
+        }
+        else
+        {
+            mAccount.setText("");
+            mPassword.setText("");
+        }
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,11 +66,10 @@ public class MainActivity extends AppCompatActivity {
             log.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    String password =mPassword.getText().toString();
+                    String string=mAccount.getText().toString();
                     Intent i=new Intent(MainActivity.this,WelcomeActivity.class);
-
-
                     if (password.equals(sharedPreferences.getString(string,""))){
-
                     startActivity(i);
                 }
 
