@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Myapplication</string>
+    <string name="password">密码</string>
+    <string name="account">账号</string>
+    <string name="log">登录</string>
+    <string name="forgot">忘记密码</string>
+    <string name="login">注册</string>
+
+</resources>
